@@ -27,6 +27,7 @@ function App() {
       const seconds = ((now - startTime) / 1000).toFixed(2);
       setEndTime(now);
       setResult(seconds);
+      setActiveButton();
     }
   }, [score]);
   return (
