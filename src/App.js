@@ -9,6 +9,9 @@ function App() {
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [result, setResult] = useState();
+  const [records, setRecords] = useState(
+    JSON.parse(localStorage.getItem("record")) || []
+  );
 
   function getRandomNumber() {
     let randomNumber = Math.floor(Math.random() * 8) + 1;
@@ -30,10 +33,26 @@ function App() {
       setEndTime(now);
       setResult(seconds);
       setActiveButton();
+      const updated = [...records, seconds].sort((a, b) => a - b);
+      setRecords(updated);
+      localStorage.setItem("record", JSON.stringify(updated));
+      setScore(0);
     }
   }, [score]);
   return (
     <>
+      <ul
+        style={{
+          position: "absolute",
+          right: "400px",
+          top: "200px",
+          fontSize: "20px",
+        }}
+      >
+        {records.map((record, index) => {
+          return <li key={index}>{record}</li>;
+        })}
+      </ul>
       <ContainerContext.Provider
         value={{
           score,
@@ -43,9 +62,7 @@ function App() {
         }}
       >
         <NumbersContainer />
-        {score === 10 ? (
-          <p style={{ fontSize: "55px", textAlign: "center" }}>{result} sec</p>
-        ) : null}
+
         <button
           onClick={() => {
             setStartTime(Date.now());
