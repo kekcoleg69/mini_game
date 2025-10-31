@@ -1,12 +1,7 @@
 import React from "react";
 import Number from "./Number";
 
-export default function NumbersContainer({
-  changeActiveButton,
-  activeButton,
-  score,
-  setScore,
-}) {
+export default function NumbersContainer({}) {
   const styles = {
     height: "700px",
     width: "700px",
@@ -19,87 +14,15 @@ export default function NumbersContainer({
   };
   return (
     <div style={styles}>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={1}
-      >
-        1
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={2}
-      >
-        2
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={3}
-      >
-        3
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={4}
-      >
-        4
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={5}
-      >
-        5
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={6}
-      >
-        6
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={7}
-      >
-        7
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={8}
-      >
-        8
-      </Number>
-      <Number
-        activeButton={activeButton}
-        changeActiveButton={changeActiveButton}
-        score={score}
-        setScore={setScore}
-        id={9}
-      >
-        9
-      </Number>
+      <Number id={1}>1</Number>
+      <Number id={2}>2</Number>
+      <Number id={3}>3</Number>
+      <Number id={4}>4</Number>
+      <Number id={5}>5</Number>
+      <Number id={6}>6</Number>
+      <Number id={7}>7</Number>
+      <Number id={8}>8</Number>
+      <Number id={9}>9</Number>
     </div>
   );
 }

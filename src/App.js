@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import NumbersContainer from "./components/NumbersContainer";
+
+export const ContainerContext = createContext();
 
 function App() {
   const [score, setScore] = useState(0);
@@ -32,31 +34,34 @@ function App() {
   }, [score]);
   return (
     <>
-      <NumbersContainer
-        score={score}
-        activeButton={activeButton}
-        setActiveButton={setActiveButton}
-        changeActiveButton={changeActiveButton}
-        setScore={setScore}
-      />
-      {score === 10 ? (
-        <p style={{ fontSize: "55px", textAlign: "center" }}>{result} sec</p>
-      ) : null}
-      <button
-        onClick={() => {
-          setStartTime(Date.now());
-          changeActiveButton();
-        }}
-        style={{
-          display: "flex",
-          margin: "0 auto",
-          marginTop: "50px",
-          padding: "50px 200px",
-          textAlign: "center",
+      <ContainerContext.Provider
+        value={{
+          score,
+          activeButton,
+          changeActiveButton,
+          setScore,
         }}
       >
-        Начать
-      </button>
+        <NumbersContainer />
+        {score === 10 ? (
+          <p style={{ fontSize: "55px", textAlign: "center" }}>{result} sec</p>
+        ) : null}
+        <button
+          onClick={() => {
+            setStartTime(Date.now());
+            changeActiveButton();
+          }}
+          style={{
+            display: "flex",
+            margin: "0 auto",
+            marginTop: "50px",
+            padding: "50px 200px",
+            textAlign: "center",
+          }}
+        >
+          Начать
+        </button>
+      </ContainerContext.Provider>
     </>
   );
 }
